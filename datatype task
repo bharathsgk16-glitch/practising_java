@@ -1,0 +1,13 @@
+class datatype {
+public static void main(String[] args) {
+	//Primitive and Non Primitive
+	byte b=100;//1byte-deault-0-(-128 to 127)
+	short s=1234;//2byte-defaut-0-(-32768 to  32767)
+	int i=304054;//4byte-default-0-(-2147....10 less)
+	long l=9952190109l;//8byte (we can use many numbers)
+	boolean flag=true;//1bit(deault false-ture or false)
+	float fl=1343.22f;//8byte(6 to 7 decimal)
+	double d=134.22;//8byte/64bit(15 decimal value)
+	char ch='A';//(unicaode/'/u0000)
+	System.out.println(b+" "+\n+s+""+);
+}
