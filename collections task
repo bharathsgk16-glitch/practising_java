@@ -1,0 +1,80 @@
+//Array List
+/ArrayList Example pprog
+public class Collections {
+public static void main(String[] args) {
+	ArrayList<Integer> ar=new ArrayList<>();
+	
+	ar.add(12);
+	ar.add(15);
+	ar.add(14);
+	System.out.println(ar);
+	
+	ArrayList arr=new ArrayList<>();
+arr.add("bharth");
+arr.add(13);
+arr.addAll(1,ar);
+
+System.out.println(arr);
+//Foreach
+for(Integer a:ar) {
+	System.out.println(a);
+}
+	//Iterator 
+	Iterator it=ar.iterator();
+	while(it.hasNext()) {
+		System.out.println(it.next());
+	}
+
+	}
+
+}
+ArrayList task
+class dem{
+	public static void main(String[] args) {
+		List<Integer> li=new ArrayList<>();
+	li.add(12);
+	li.add(13);
+	li.add(16);
+	li.add(15);
+	System.out.println(li);
+//	int largest=Collections.max(li);
+//	int smallest=Collections.min(li);
+	int largest=li.get(0);
+	int smallest=li.get(0);
+	for(int ad:li) {
+		if(ad>largest) {
+			largest=ad;
+		}else if(ad<smallest) {
+			smallest=ad;
+		}
+	}
+	System.out.println("Max:"+largest+"///"+smallest);
+	
+	}
+}
+//arrayList task2:
+class remove{
+	public static void main(String[] args) {
+		List<String> li=new ArrayList<>();
+	li.add("Bharat");
+	li.add("karis");
+	li.add("Bharat");
+	li.add("Logu");
+	li.add("Rag");
+	System.out.println("Begfore remove dupilicates"+li);
+	ArrayList<String> unique = new ArrayList<>();
+	ArrayList<String> duplicate=new ArrayList<>();
+	for(String rem:li) {
+		if(!unique.contains(rem)) {
+			unique.add(rem); 
+		}else {
+			if(!duplicate.contains(rem)) {
+				duplicate.add(rem);
+			}
+		}
+	}
+	System.out.println("Unique"+unique);
+	System.out.println("Duplicate Element"+duplicate);
+
+	
+}}
