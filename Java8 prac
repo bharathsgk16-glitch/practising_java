@@ -1,0 +1,235 @@
+package jadbcpro;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+
+interface chkeck{
+	void checking(int n);
+}
+class Lmain{
+	public static void main(String[] args) {
+		
+	
+	checknum ch=(n)->{
+		if(n%2==0) {
+			System.out.println("Even");
+		}else {
+			System.out.println("odd");
+		}
+	};
+	ch.check(18);
+}}
+class da{
+	public static void main(String[] args) {
+		ArrayList<String> st=new ArrayList<>();
+		st.add("varht");
+		st.add("hathj");
+		st.add("sath");
+		st.add("bath");
+		
+		
+		st.sort((a,b)->b.compareTo(a));
+		System.out.println(st);
+	}
+}
+
+//Function Interface use of annotation
+@FunctionalInterface
+interface Hellos{
+	void say();
+}
+class Fmain{
+	public static void main(String[] args) {
+		Hellos h=()->System.out.println("Hello everyone i am bharath");
+		h.say();
+	}
+	
+}
+
+//task2
+@FunctionalInterface
+interface Calculate{
+	int operate(int a,int b);
+}
+class cmain{
+	public static void main(String[] args) {
+		Calculate c=(a,b)->a+b ;
+		System.out.println(c.operate(10, 209));
+	}
+}
+//Default Methods
+@FunctionalInterface
+interface Car{
+	 void start();
+	 default void started() {
+		 System.out.println("Car is started");
+	 }
+}
+class Engine implements Car{
+public void start() {	
+	System.out.println("Car engine is started");
+}
+}
+class CarMain {
+public static void main(String[] args) {
+	Engine eg =new Engine();
+	eg.start();
+	eg.started();
+}
+}
+//task2
+interface Area{
+	default void square(int side) {
+		System.out.println("Area of Square"+(side));
+	}
+}
+class shmain{
+	public static void main(String[] args) {
+		Area a=new Area() {};//here why use annoymos beacuse of interface cannot have create obj
+		a.square(12);
+	}
+}
+
+//Predicate:
+class predtask{
+	public static void main(String[] args) {
+		Predicate<String> prstart=s->s.startsWith("A");
+	System.out.println(prstart.test("Apple"));
+	System.out.println(prstart.test("Orangre"));
+	}
+}
+class evenscheck{
+	
+	public static void main(String[] args) {
+		ArrayList<Integer> ar=new ArrayList<>();
+		ar.add(1);
+		ar.add(2);
+		ar.add(4);
+		ar.add(8);
+		ar.add(3);
+		
+		Predicate<Integer> evencheck=(num)->num%2==0;
+		
+		for(Integer i:ar) {
+			if(evencheck.test(i)) {
+				System.out.println(i);
+			}
+		}
+		//System.out.println(evencheck.test(null));
+	} 
+}
+//Bipredicate
+class iseven{
+  public static void main(String[] args) {
+   BiPredicate<Integer, Integer> isnumeven=(a,b)->(a+b)%2==0;
+    if(isnumeven.test(5, 5)) {
+    	System.out.println("Its even number");
+    }
+}
+}
+class bipasswordcheck{
+	public static void main(String[] args) {
+	 Scanner sc=new Scanner(System.in);
+	 System.out.println("enter the username");
+	 String user=sc.nextLine();
+	 System.out.println("Enter the Password");
+	 Integer upwrd=Integer.valueOf(sc.nextInt());
+	 BiPredicate<String, Integer> checkuserandpass=(name,pass)->name.equals("H1")&&pass==123;
+	 if(checkuserandpass.test(user, upwrd)) {
+		 System.out.println("Logged");
+	 }else {
+		 System.out.println("not logged");
+	 }
+	}
+	
+}
+//function
+//task1
+class functask{
+	public static void main(String[] args) {
+		Function<String,Integer> length=(st)->st.length();
+		System.out.println(length.apply("Bharath"));
+	}
+}
+//functiontask2
+class sqnum{
+	public static void main(String[] args) {
+		Function<Integer,Integer> sqr=(num)->(num*num);
+		System.out.println(sqr.apply(5));
+	}
+}
+//Bifunction
+class Sums{
+	public static void main(String[] args) {
+		BiFunction<Integer, Integer, Integer> add=(a,b)->(a+b);
+		System.out.println(add.apply(12, 12));
+	}
+}
+
+class fullname{
+	public static void main(String[] args) {
+		BiFunction<String, String, String>concat=(str,str1)->(str+""+str1);
+		System.out.println(concat.apply("Bharat","Raj"));
+	}
+}
+//Consumer
+class Consumers{
+	public static void main(String[] args) {
+	List<String> list=Arrays.asList("Bharath","Rath","Hath");
+	Consumer<String> showlist=s-> System.out.println(s);
+	list.forEach(showlist);
+	}
+}
+class Tochange{
+	public static void main(String[] args) {
+		Consumer<String> showlist=s-> System.out.println(s.toUpperCase());
+		showlist.accept("Bharath");
+	}
+	
+	
+}
+//BiCosumer
+class Bipri{
+	public static void main(String[] args) {
+		HashMap<Integer, String> h=new HashMap<>();
+		h.put(1, "Applle");
+		h.put(1, "Pinapple");
+		h.put(1, "Orange");
+		h.put(1, "Grape");
+		BiConsumer<Object, Object> print=(pno,pro)->System.out.println("Priceno"+pno+"Product name"+pro);
+		for(Map.Entry m:h.entrySet()) {
+			print.accept(m.getKey(), m.getValue());
+		}
+	}
+}
+class Biconsum{
+	public static void main(String[] args) {
+		BiConsumer<Integer,Integer> sum=(a,b)->System.out.println("Adding"+(a+b));
+		sum.accept(23, 34);
+	}
+}
+//Supllier
+class otp{
+	public static void main(String[] args) {
+		Supplier<Integer> randomnum=()->new Random().nextInt(10000);
+		System.out.println(randomnum.get());
+	}
+}
+class Demo{
+	public static void main(String[] args) {
+		Supplier<Long> time=()-> System.currentTimeMillis();
+		System.out.println(time.get());
+	}
+}
